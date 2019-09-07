@@ -1601,9 +1601,9 @@ grant-profile@^0.0.4:
     request-oauth "0.0.3"
 
 grant@^4.6.2:
-  version "4.6.2"
-  resolved "https://registry.yarnpkg.com/grant/-/grant-4.6.2.tgz#8d0ef5381d5a07f2e9e68250300e7074d0648af4"
-  integrity sha512-FON7qtoJSQ2OnINZyysezozqGthaPuVXjzmMpaXQcQXKSjuzouYK4I6FJhvU/QAZIhkWkgyRsk8ZhRu63Z2Rjw==
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/grant/-/grant-4.6.3.tgz#d0666c0adb0d1fefb97c5ea1d788a898daefd208"
+  integrity sha512-Qz3gSDFYUmH05HAhcyLpHVE4XqeHR77t8YqqHmhG6UG8WYertli4W2tgnNWhRtOBWLxT/RRJFWsfDht7sesmaA==
   dependencies:
     qs "^6.7.0"
     request-compose "^1.2.0"

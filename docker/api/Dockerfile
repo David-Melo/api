@@ -24,6 +24,8 @@ RUN n "$NODE_VERSION"
 # Install Yarn
 RUN npm install -g yarn
 
+RUN npm install shx -g
+
 COPY ./run.sh /usr/bin/run
 
 RUN chmod 700 /usr/bin/run
