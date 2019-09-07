@@ -3,8 +3,6 @@ version: '3.3'
 networks:
   api_backend:
     driver: bridge
-  proxy:
-    external: true
 
 services:
 
@@ -30,7 +28,6 @@ services:
       - ./nginx/sites/:/etc/nginx/sites-available
     networks:
       - api_backend
-      - proxy
     depends_on:
       - api
     tty: true

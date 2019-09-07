@@ -30,6 +30,13 @@
     "compile": "shx rm -rf lib/ && tsc"
   },
   "dependencies": {
+    "@types/compression": "^1.0.1",
+    "@types/cors": "^2.8.6",
+    "@types/helmet": "^0.0.44",
+    "@types/jsonwebtoken": "^8.3.3",
+    "@types/mocha": "^5.2.7",
+    "@types/mongodb": "^3.3.1",
+    "@types/serve-favicon": "^2.2.31",
     "@feathersjs/authentication": "^4.3.0",
     "@feathersjs/authentication-local": "^4.3.0",
     "@feathersjs/authentication-oauth": "^4.3.0",

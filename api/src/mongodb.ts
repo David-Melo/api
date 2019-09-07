@@ -6,10 +6,10 @@ const logger = require('./logger');
 
 export default function (app: Application) {
   const config = app.get('mongodb');
-  const promise = MongoClient.connect(config, { useNewUrlParser: true }).then(client => {
+  const promise = MongoClient.connect(config, { useNewUrlParser: true }).then((client: any) => {
     const dbName = parse(config, () => {});
     return client.db(dbName);
-  }).catch(error => {
+  }).catch((error: any) => {
     logger.error(error);
   });
 
