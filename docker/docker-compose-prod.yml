@@ -1,0 +1,70 @@
+version: '3.3'
+
+networks:
+  backend:
+    driver: bridge
+  proxy:
+    external: true
+
+services:
+
+  api:
+    build:
+      context: ./api
+      args:
+        - NODE_ENV=production
+        - NODE_VERSION=10.16.3
+    volumes:
+      - ../api:/opt/app
+    networks:
+      - backend
+    entrypoint: run "yarn start"
+    tty: true
+    restart: always
+
+  nginx:
+    build:
+      context: ./nginx
+    volumes:
+      - ../data/logs/nginx/:/var/log/nginx
+      - ./nginx/sites/:/etc/nginx/sites-available
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - backend
+      - proxy
+    depends_on:
+      - api
+    tty: true
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dekorausa.rule=Host(`api.desm.tech`)"
+      - "traefik.http.routers.dekorausa.entrypoints=websecure"
+      - "traefik.http.routers.dekorausa.tls.certresolver=mytlschallenge"
+
+  mongodb:
+    image: 'bitnami/mongodb:latest'
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+    volumes:
+      - ../data:/bitnami
+    environment:
+      - "MONGODB_ROOT_PASSWORD=root"
+      - "MONGODB_USERNAME=user"
+      - "MONGODB_PASSWORD=pass"
+      - "MONGODB_DATABASE=api"
+
+  neo4j:
+    image: 'bitnami/neo4j:latest'
+    networks:
+      - backend
+    ports:
+      - '7474:7474'
+      - '7473:7473'
+      - '7687:7687'
+    volumes:
+      - ../data:/bitnami
