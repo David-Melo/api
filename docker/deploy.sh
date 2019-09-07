@@ -4,11 +4,11 @@
 ####################################################
 ## Change Working Directory To laradock
 ####################################################
-cd /opt/dekorausa/docker
+cd /opt/api/docker
 
 ####################################################
 ## Run Docker Commands
 ####################################################
-docker-compose -p dekorausa -f docker-compose-prod.yml build
+docker-compose -p api -f docker-compose-prod.yml build
 docker-compose down
-docker-compose -p dekorausa -f docker-compose-prod.yml up -d
+docker-compose -p api -f docker-compose-prod.yml up -d

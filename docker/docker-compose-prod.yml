@@ -40,9 +40,9 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.dekorausa.rule=Host(`api.desm.tech`)"
-      - "traefik.http.routers.dekorausa.entrypoints=websecure"
-      - "traefik.http.routers.dekorausa.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.api.rule=Host(`api.desm.tech`)"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls.certresolver=mytlschallenge"
 
   mongodb:
     image: 'bitnami/mongodb:latest'
