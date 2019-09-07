@@ -24,7 +24,7 @@ RUN n "$NODE_VERSION"
 # Install Yarn
 RUN npm install -g yarn
 
-RUN npm install shx -g
+RUN npm install shx typescript ts-node -g
 
 COPY ./run.sh /usr/bin/run
 
