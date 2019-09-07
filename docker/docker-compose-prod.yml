@@ -1,7 +1,7 @@
 version: '3.3'
 
 networks:
-  backend:
+  api:
     driver: bridge
   proxy:
     external: true
@@ -17,7 +17,7 @@ services:
     volumes:
       - ../api:/opt/app
     networks:
-      - backend
+      - api
     entrypoint: run "yarn start"
     tty: true
     restart: always
@@ -29,7 +29,7 @@ services:
       - ../data/logs/nginx/:/var/log/nginx
       - ./nginx/sites/:/etc/nginx/sites-available
     networks:
-      - backend
+      - api
       - proxy
     depends_on:
       - api
@@ -46,7 +46,7 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - backend
+      - api
     volumes:
       - ../data:/bitnami
     environment:
@@ -58,7 +58,7 @@ services:
   neo4j:
     image: 'bitnami/neo4j:latest'
     networks:
-      - backend
+      - api
     ports:
       - '7474:7474'
       - '7473:7473'
